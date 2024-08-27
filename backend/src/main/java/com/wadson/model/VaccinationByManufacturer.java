@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.time.LocalDate;
 
@@ -20,13 +22,15 @@ public class VaccinationByManufacturer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @Column(nullable = false)
+	@ManyToOne
+    @JoinColumn(name = "country_id", nullable = false)
     private Country country;
     
     @Column(nullable = false)
     private LocalDate vaccinationDate;
     
-    @Column(nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "vaccine_id", nullable = false)
     private Vaccine vaccine;
     
     @Column(nullable = false)

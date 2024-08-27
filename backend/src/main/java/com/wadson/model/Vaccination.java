@@ -16,7 +16,8 @@ public class Vaccination {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @Column(nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "country_id", nullable = false)
     private Country country;
     
     @Column(nullable = false)
@@ -49,9 +50,15 @@ public class Vaccination {
     @Column(nullable = true)
     private Double dailyVaccinationsPerMillion;
     
-    @Column(nullable = false)
+    @ManyToMany
+    @JoinTable(
+        name = "vaccination_vaccines",
+        joinColumns = @JoinColumn(name = "vaccination_id"),
+        inverseJoinColumns = @JoinColumn(name = "vaccine_id")
+    )
     private List<Vaccine> vaccines;
     
-    @Column(nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "source_id", nullable = false)
     private Source source;
 }

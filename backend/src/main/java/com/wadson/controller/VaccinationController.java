@@ -12,13 +12,12 @@ import com.wadson.model.Vaccination;
 import com.wadson.service.VaccinationService;
 
 @RestController
-@RequestMapping("/vaccination")
 public class VaccinationController {
 	
 	@Autowired
 	private VaccinationService vaccinationService;
 	
-	@GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE })
+	@GetMapping(value = "/vaccination", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public List<Vaccination> getVaccinationData() {
 		return vaccinationService.getAll();
 	}
