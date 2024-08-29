@@ -1,11 +1,13 @@
 package com.wadson.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.data.domain.PageRequest;
 
+import com.wadson.dto.DailyVaccinationSumChartDTO;
 import com.wadson.dto.DailyVaccinationSumDTO;
 import com.wadson.model.Vaccination;
 import com.wadson.repository.VaccinationRepository;
@@ -25,5 +27,12 @@ public class VaccinationService {
 	
 	public List<DailyVaccinationSumDTO> getDailyVaccinationSum() {
         return vaccinationRepository.findDailyVaccinationSum();
+    }
+	
+	public DailyVaccinationSumChartDTO getDailyVaccinationSumChart() {
+        List<LocalDate> dates = vaccinationRepository.findDistinctDates();
+        List<Double> sums = vaccinationRepository.findSumDailyVaccinations();
+
+        return new DailyVaccinationSumChartDTO(dates, sums);
     }
 }

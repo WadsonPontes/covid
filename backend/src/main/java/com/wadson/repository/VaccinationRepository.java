@@ -1,5 +1,6 @@
 package com.wadson.repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -18,4 +19,10 @@ public interface VaccinationRepository extends JpaRepository<Vaccination, Long> 
 	           "GROUP BY v.vaccinationDate " +
 	           "ORDER BY v.vaccinationDate")
     List<DailyVaccinationSumDTO> findDailyVaccinationSum();
+	
+	@Query("SELECT v.vaccinationDate FROM Vaccination v GROUP BY v.vaccinationDate ORDER BY v.vaccinationDate")
+    List<LocalDate> findDistinctDates(); // Retorna uma lista de datas distintas
+
+    @Query("SELECT SUM(v.dailyVaccinationsPerMillion) FROM Vaccination v GROUP BY v.vaccinationDate ORDER BY v.vaccinationDate")
+    List<Double> findSumDailyVaccinations(); // Retorna a soma das vacinações diárias por milhão para cada data
 }

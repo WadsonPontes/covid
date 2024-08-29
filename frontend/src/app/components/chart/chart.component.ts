@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppService } from 'src/app/services/app.service';
 
 @Component({
   selector: 'app-chart',
@@ -6,18 +7,34 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./chart.component.scss']
 })
 export class ChartComponent implements OnInit {
+  public data: any;
 
   public graph = {
     data: [
-        { x: [1, 2, 3], y: [2, 6, 10], type: 'scatter', mode: 'lines+points', marker: {color: 'red'} },
-        { x: [1, 2, 3], y: [2, 5, 10], type: 'bar' },
+        {
+          x: [],
+          y: [],
+          type: 'scatter',
+          mode: 'lines+points',
+          marker: {color: 'red'}
+        }
     ],
-    layout: {width: 320, height: 240, title: 'A Fancy Plot'}
+    layout: {width: 1280, height: 720, title: 'Daily COVID-19 vaccine doses administered per million people'}
   };
 
-  constructor() { }
+  constructor(private appService: AppService) { }
 
   ngOnInit(): void {
+    this.appService.getDailySum().subscribe(
+      (response) => {
+        this.data = response;
+        this.graph.data[0].x = this.data.x;
+        this.graph.data[0].y = this.data.y;
+      },
+      (error) => {
+        console.error('Error retrieving data:', error);
+      }
+    );
   }
 
 }
