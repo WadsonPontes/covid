@@ -9,6 +9,7 @@ import org.springframework.data.domain.PageRequest;
 
 import com.wadson.dto.DailyVaccinationSumChartDTO;
 import com.wadson.dto.DailyVaccinationSumDTO;
+import com.wadson.dto.PercentageVaccinatedByCountryDTO;
 import com.wadson.model.Vaccination;
 import com.wadson.repository.VaccinationRepository;
 
@@ -34,5 +35,12 @@ public class VaccinationService {
         List<Double> sums = vaccinationRepository.findSumDailyVaccinations();
 
         return new DailyVaccinationSumChartDTO(dates, sums);
+    }
+	
+	public PercentageVaccinatedByCountryDTO getPercentageVaccinatedByCountryChart() {
+        List<String> countries = vaccinationRepository.findCountryName();
+        List<Double> sums = vaccinationRepository.findSumByCountry();
+
+        return new PercentageVaccinatedByCountryDTO(countries, sums);
     }
 }

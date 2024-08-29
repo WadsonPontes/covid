@@ -25,4 +25,14 @@ public interface VaccinationRepository extends JpaRepository<Vaccination, Long> 
 
     @Query("SELECT SUM(v.dailyVaccinationsPerMillion) FROM Vaccination v GROUP BY v.vaccinationDate ORDER BY v.vaccinationDate")
     List<Double> findSumDailyVaccinations(); // Retorna a soma das vacinações diárias por milhão para cada data
+    
+    @Query("SELECT c.name " +
+            "FROM Vaccination v " +
+            "JOIN v.country c " +
+            "GROUP BY c.name " +
+            "ORDER BY MAX(v.peopleFullyVaccinatedPerHundred) DESC")
+    List<String> findCountryName();
+    
+    @Query("SELECT MAX(v.peopleFullyVaccinatedPerHundred) as num_max FROM Vaccination v GROUP BY v.country ORDER BY num_max DESC")
+    List<Double> findSumByCountry();
 }

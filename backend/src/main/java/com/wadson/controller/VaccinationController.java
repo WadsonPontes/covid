@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.wadson.dto.DailyVaccinationSumChartDTO;
 import com.wadson.dto.DailyVaccinationSumDTO;
+import com.wadson.dto.PercentageVaccinatedByCountryDTO;
 import com.wadson.model.Vaccination;
 import com.wadson.service.VaccinationService;
 
@@ -34,5 +35,10 @@ public class VaccinationController {
 	@GetMapping(value = "/daily-sum-chart", produces = MediaType.APPLICATION_JSON_VALUE)
     public DailyVaccinationSumChartDTO getDailyVaccinationSumChart() {
         return vaccinationService.getDailyVaccinationSumChart();
+    }
+	
+	@GetMapping(value = "/per-country-chart", produces = MediaType.APPLICATION_JSON_VALUE)
+    public PercentageVaccinatedByCountryDTO getPerCountryChart() {
+        return vaccinationService.getPercentageVaccinatedByCountryChart();
     }
 }
