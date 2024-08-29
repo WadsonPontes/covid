@@ -19,6 +19,6 @@ public class VaccinationController {
 	
 	@GetMapping(value = "/vaccination", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public List<Vaccination> getVaccinationData() {
-		return vaccinationService.getAll();
+		return vaccinationService.getAllWithLimit();
 	}
 }

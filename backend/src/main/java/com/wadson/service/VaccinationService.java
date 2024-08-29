@@ -19,6 +19,6 @@ public class VaccinationService {
     }
 	
 	public List<Vaccination> getAllWithLimit() {
-		return vaccinationRepository.findAllWithLimit(PageRequest.of(0, 2));
+		return vaccinationRepository.findAllWithLimit(PageRequest.of(0, 100));
     }
 }
