@@ -50,13 +50,13 @@ public class Vaccination {
     @Column(nullable = true)
     private Double dailyVaccinationsPerMillion;
     
-    @ManyToMany
-    @JoinTable(
-        name = "vaccination_vaccines",
-        joinColumns = @JoinColumn(name = "vaccination_id"),
-        inverseJoinColumns = @JoinColumn(name = "vaccine_id")
-    )
-    private List<Vaccine> vaccines;
+//    @ManyToMany
+//    @JoinTable(
+//        name = "vaccination_vaccines",
+//        joinColumns = @JoinColumn(name = "vaccination_id"),
+//        inverseJoinColumns = @JoinColumn(name = "vaccine_id")
+//    )
+//    private List<Vaccine> vaccines;
     
     @ManyToOne
     @JoinColumn(name = "source_id", nullable = false)

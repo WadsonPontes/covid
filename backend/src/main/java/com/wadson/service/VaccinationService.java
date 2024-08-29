@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.data.domain.PageRequest;
 
 import com.wadson.model.Vaccination;
 import com.wadson.repository.VaccinationRepository;
@@ -15,5 +16,9 @@ public class VaccinationService {
 	
 	public List<Vaccination> getAll() {
         return vaccinationRepository.findAll();
+    }
+	
+	public List<Vaccination> getAllWithLimit() {
+		return vaccinationRepository.findAllWithLimit(PageRequest.of(0, 2));
     }
 }
