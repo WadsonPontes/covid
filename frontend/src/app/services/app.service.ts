@@ -18,4 +18,8 @@ export class AppService {
   getDailySum(): Observable<any> {
     return this.http.get(`${this.apiUrl}/daily-sum-chart`);
   }
+
+  getPerCountry(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/per-country-chart`);
+  }
 }

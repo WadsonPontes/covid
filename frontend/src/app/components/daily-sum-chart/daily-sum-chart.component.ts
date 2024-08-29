@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { AppService } from 'src/app/services/app.service';
 
 @Component({
-  selector: 'app-chart',
-  templateUrl: './chart.component.html',
-  styleUrls: ['./chart.component.scss']
+  selector: 'app-daily-sum-chart',
+  templateUrl: './daily-sum-chart.component.html',
+  styleUrls: ['./daily-sum-chart.component.scss']
 })
-export class ChartComponent implements OnInit {
+export class DailySumChartComponent implements OnInit {
   public data: any;
 
   public graph = {
@@ -19,7 +19,12 @@ export class ChartComponent implements OnInit {
           marker: {color: 'red'}
         }
     ],
-    layout: {width: 1280, height: 720, title: 'Daily COVID-19 vaccine doses administered per million people'}
+    layout: {
+      title: 'Daily COVID-19 vaccine doses administered per million people',
+      width: 1920,
+      height: 500
+    },
+    config: { responsive: true }
   };
 
   constructor(private appService: AppService) { }
