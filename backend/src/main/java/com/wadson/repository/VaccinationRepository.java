@@ -30,9 +30,20 @@ public interface VaccinationRepository extends JpaRepository<Vaccination, Long> 
             "FROM Vaccination v " +
             "JOIN v.country c " +
             "GROUP BY c.name " +
-            "ORDER BY MAX(v.peopleFullyVaccinatedPerHundred) DESC")
+            "ORDER BY MAX(v.peopleFullyVaccinatedPerHundred) ASC")
     List<String> findCountryName();
     
-    @Query("SELECT MAX(v.peopleFullyVaccinatedPerHundred) as num_max FROM Vaccination v GROUP BY v.country ORDER BY num_max DESC")
+    @Query("SELECT MAX(v.peopleFullyVaccinatedPerHundred) as num_max FROM Vaccination v GROUP BY v.country ORDER BY num_max ASC")
     List<Double> findSumByCountry();
+    
+    @Query("SELECT v.name FROM VaccinationByManufacturer vbm "
+    		+ "JOIN vbm.vaccine v "
+    		+ "GROUP BY v.name "
+    		+ "ORDER BY SUM(vbm.totalVaccinations) DESC")
+    List<String> findVaccineName();
+    
+    @Query("SELECT SUM(vbm.totalVaccinations) AS total FROM VaccinationByManufacturer vbm "
+    		+ "GROUP BY vbm.vaccine "
+    		+ "ORDER BY total DESC")
+    List<Double> findVaccinationByManufacturer();
 }

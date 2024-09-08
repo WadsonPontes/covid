@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PercentageVaccinatedByCountryDTO {
-	private List<String> x;  // Lista de nomes de países
-    private List<Double> y;   // Lista dos valores máximos de vacinação completa por 100 habitantes
+	private List<Double> x;  // Lista dos valores máximos de vacinação completa por 100 habitantes
+    private List<String> y;   // Lista de nomes de países
 }

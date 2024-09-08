@@ -17,11 +17,12 @@ export class PerCountryChartComponent implements OnInit {
           y: [],
           width: 0.90,
           type: 'bar',
+          orientation: 'h',
           text: [],
           textposition: 'auto',
           hoverinfo: 'none',
           marker: {
-            color: 'blue',
+            color: 'rgba(55,128,191,0.6)',
             line: {
               color: 'blue',
               width: 0.1
@@ -36,8 +37,8 @@ export class PerCountryChartComponent implements OnInit {
         xref: 'paper', // Usar coordenadas relativas ao papel
         xanchor: 'left', // Ancorar à esquerda
       },
-      width: 7680,
-      height: 500,
+      width: 1280,
+      height: 7680,
       barmode: 'stack'
     },
     config: { responsive: true }
@@ -50,11 +51,12 @@ export class PerCountryChartComponent implements OnInit {
       (response) => {
         this.data = response;
 
+        let x = this.data.x.slice(0, this.maxCountries);
         let y = this.data.y.slice(0, this.maxCountries);
 
-        this.graph.data[0].x = this.data.x.slice(0, this.maxCountries);
+        this.graph.data[0].x = x
         this.graph.data[0].y = y;
-        this.graph.data[0].text = y.map(String);
+        this.graph.data[0].text = x.map(String);
       },
       (error) => {
         console.error('Error retrieving data:', error);

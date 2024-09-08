@@ -21,7 +21,7 @@ export class DailySumChartComponent implements OnInit {
     ],
     layout: {
       title: 'Daily COVID-19 vaccine doses administered per million people',
-      width: 1920,
+      width: 1280,
       height: 500
     },
     config: { responsive: true }

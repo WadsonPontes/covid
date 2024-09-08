@@ -22,4 +22,8 @@ export class AppService {
   getPerCountry(): Observable<any> {
     return this.http.get(`${this.apiUrl}/per-country-chart`);
   }
+
+  getMarketShares(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/market-shares-chart`);
+  }
 }
