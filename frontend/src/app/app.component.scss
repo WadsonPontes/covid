@@ -38,8 +38,8 @@
   .navbar ul li a::before {
     content: '';
     display: inline-block;
-    width: 20px;
-    height: 20px;
+    width: 40px;
+    height: 40px;
     margin-right: 8px;
     background-size: contain;
   }
@@ -49,11 +49,11 @@
   }
   
   .navbar ul li:nth-child(2) a::before {
-    background-image: url('../assets/images/per-country-chart.png');
+    background-image: url('../assets/images/manufacturer-chart.png');
   }
   
   .navbar ul li:nth-child(3) a::before {
-    background-image: url('../assets/images/manufacturer-chart.png');
+    background-image: url('../assets/images/per-country-chart.png');
   }
   
   .login-btn {
