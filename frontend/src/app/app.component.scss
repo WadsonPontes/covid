@@ -75,6 +75,11 @@
   #charts-container {
     padding-top: 60px;
   }
+
+  section {
+    width: 100vw;
+    height: min(100vh, 500px);
+  }
   
   #charts-container section {
     margin-bottom: 50px;

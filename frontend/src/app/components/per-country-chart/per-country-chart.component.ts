@@ -37,7 +37,6 @@ export class PerCountryChartComponent implements OnInit {
         xref: 'paper', // Usar coordenadas relativas ao papel
         xanchor: 'left', // Ancorar à esquerda
       },
-      width: 1280,
       height: 7680,
       barmode: 'stack'
     },

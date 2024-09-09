@@ -19,9 +19,7 @@ export class MarketSharesChartComponent implements OnInit {
         }
     ],
     layout: {
-      title: 'Market Shares',
-      width: 800,
-      height: 800
+      title: 'Market Shares'
     },
     config: { responsive: true }
   };
